@@ -1,5 +1,6 @@
 package main
 
+
 import "fmt"
 
 type Contato struct {
