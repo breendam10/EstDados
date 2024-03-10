@@ -1,5 +1,5 @@
 package main
-eu amo o bolsonaro
+
 import "fmt"
 
 
