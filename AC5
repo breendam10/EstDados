@@ -39,4 +39,30 @@ func main() {
         }
     }
 
+func calcularTempo(PA, PB int, G1, G2 float64) string {
+    anos := 0
+    for PA <= PB {
+      PA += int(float64(PA) * (G1 / 100))
+      PB += int(float64(PB) * (G2 / 100))
+      anos++
+      if anos > 100 {
+        return "Mais de 1 seculo."
+      }
+    }
+    return fmt.Sprintf("%d anos.", anos)
+  }
+  
+  func mostraresultado() {
+    var T int
+    fmt.Scan(&T) 
+  
+    for i := 0; i < T; i++ {
+      var PA, PB int
+      var G1, G2 float64
+      fmt.Scan(&PA, &PB, &G1, &G2)
+      resultado := calcularTempo(PA, PB, G1, G2)
+      fmt.Println(resultado)
+    }
+  }
+  
 }
