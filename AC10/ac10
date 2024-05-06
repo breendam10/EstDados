@@ -1,0 +1,147 @@
+package main
+
+import (
+	"fmt"
+)
+
+func calculaMDC(a, b int) int {
+	for b != 0 {
+		temp := b
+		b = a % b
+		a = temp
+	}
+	return a
+}
+
+func trocaFigurinhas() {
+	var N int
+	fmt.Scan(&N) 
+
+	for i := 0; i < N; i++ {
+		var F1, F2 int
+		fmt.Scan(&F1, &F2)
+		mdc := calculaMDC(F1, F2)
+		fmt.Println(mdc)
+	}
+}
+
+
+
+
+func princial() {
+	var X1, Y1, X2, Y2 int
+	for {
+		fmt.Scan(&X1, &Y1, &X2, &Y2)
+		if X1== 0 && Y1== 0 && X2 == 0 && Y2 == 0 {
+			break
+		}
+		dx:=abs(X2 - X1)
+		dy:=abs(Y2 - Y1)
+		if X1 == X2 && Y1 == Y2 {
+			fmt.Println(0)
+		} else if X1 == X2 || Y1 == Y2 || dx == dy {
+			fmt.Println(1)
+		} else {
+			fmt.Println(2) 
+		}
+	}
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+
+
+func primo(n int) bool {
+	if n <= 1 {
+		return false
+	}
+	for i := 2; i*i <= n; i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func verificaPrimo() {
+
+	var N int
+	
+	fmt.Scan(&N) 
+	for i := 0; i < N; i++ {
+		var X int
+		fmt.Scan(&X) 
+
+		if primo(X) {
+			fmt.Println("É um numero primo!")
+		} else {
+			fmt.Println("Não é um numero primo!")
+		}
+	}
+}
+
+
+
+func factorial(n int) int {
+	if n== 0 || n == 1 {
+		return 1
+	}
+	result:= 1
+	for i :=2; i <= n; i++ {
+		result * = i
+	}
+	
+	return result
+}
+
+func somaFatorial() {
+	var m, n int
+	for {
+		_, err := fmt.Scan(&m, &n)
+		if err != nil {
+			break 
+		}
+
+		factM := factorial(m)
+		factN := factorial(n)
+		sum := factM + factN
+		fmt.Println(sum)
+	}
+}
+
+
+func ContaFreq() {
+	var N int
+	fmt.Scan(&N) 
+	counts := make(map[int]int)
+	for i := 0; i < N; i++ {
+		var X int
+		fmt.Scan(&X) 
+		counts[X]++
+	}
+	for val, count :=range counts {
+		fmt.Printf("%d apareceu %d vez(es)\n", val, count)
+	}
+}
+
+
+func CalculaDias() {
+	var N int
+	fmt.Scan(&N) 
+	for i := 0; i < N; i++ {
+		var C float64
+		fmt.Scan(&C)
+
+		days := 0
+		for C > 1.0 {
+			C /= 2.0
+			days++
+		}
+		fmt.Printf("%d dias\n", days)
+	}
+}
